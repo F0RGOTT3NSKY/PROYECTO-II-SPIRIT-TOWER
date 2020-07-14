@@ -63,6 +63,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Dlls of unity
+*.dll
+
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
