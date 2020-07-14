@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &211414940
 Transform:
   m_ObjectHideFlags: 0
@@ -4069,6 +4069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  correr: 0
   animator: {fileID: 1276777559}
 --- !u!61 &1276777557
 BoxCollider2D:
@@ -4148,8 +4149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e6c9e14736c9443a804d4e80220347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 100
+  isBlocking: 0
   animator: {fileID: 1276777559}
-  AttackHitbox: {fileID: 0}
+  AttackHitbox: {fileID: 211414940}
+  enemies:
+    serializedVersion: 2
+    m_Bits: 0
+  RangoA: 0.5
   cadenciaAB: 2
   nextAB: 0
 --- !u!1 &1435014498
