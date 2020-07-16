@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class FieldOfViewScript : MonoBehaviour
 {
+    [RequireComponent(typeof(MeshFilter))]
     [SerializeField] private LayerMask layerMask;
     private Mesh mesh;
     private Vector3 origin;
@@ -13,16 +14,11 @@ public class FieldOfViewScript : MonoBehaviour
     {
         Mesh mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-    }
-    public static Vector3 GetVectorFromAngle(float angle)
-    {
-        float angleRad = angle * (Mathf.PI / 180f);
-        return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
-    }
+    //}
 
     // Update is called once per frame
-    private void Update()
-    {
+    //private void Update()
+    //{
         float fov = 90f;
         Vector3 origin = Vector3.zero;
         int rayCount = 50;
@@ -73,8 +69,13 @@ public class FieldOfViewScript : MonoBehaviour
         mesh.uv = uv;
         mesh.triangles = triangles;
     }
-    public void SetOrigin(Vector3 origin)
+    /*public void SetOrigin(Vector3 origin)
     {
         this.origin = origin;
+    }*/
+    public static Vector3 GetVectorFromAngle(float angle)
+    {
+    float angleRad = angle * (Mathf.PI / 180f);
+    return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
     }
 }
