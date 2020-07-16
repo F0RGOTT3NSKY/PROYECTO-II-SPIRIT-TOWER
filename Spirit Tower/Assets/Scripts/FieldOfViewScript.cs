@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
-
+[RequireComponent(typeof(MeshFilter))]
 public class FieldOfViewScript : MonoBehaviour
 {
-    [RequireComponent(typeof(MeshFilter))]
     [SerializeField] private LayerMask layerMask;
     private Mesh mesh;
     private Vector3 origin;
@@ -75,7 +74,7 @@ public class FieldOfViewScript : MonoBehaviour
     }*/
     public static Vector3 GetVectorFromAngle(float angle)
     {
-    float angleRad = angle * (Mathf.PI / 180f);
-    return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
+        float angleRad = angle * (Mathf.PI / 180f);
+        return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
     }
 }
