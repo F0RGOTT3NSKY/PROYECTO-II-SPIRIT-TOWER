@@ -18,13 +18,13 @@ public class Spike_Trap : MonoBehaviour
     {
         
     }
-    private void FireON()
+    private void SpikesON()
     {
         SpikeTrap.enabled = true;
         SpikeSound.Play();
     }
 
-    private void FireOFF()
+    private void SpikesOFF()
     {
         SpikeTrap.enabled = false;
         SpikeSound.Stop();
