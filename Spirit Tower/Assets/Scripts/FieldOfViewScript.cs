@@ -18,20 +18,17 @@ public class FieldOfViewScript : MonoBehaviour
     // Update is called once per frame
     //private void Update()
     //{
-        float fov = 90f;
+    //{
+        float fov = 360f;
         Vector3 origin = Vector3.zero;
         int rayCount = 50;
         float angle = 0f;
         float angleIncrease = fov / rayCount;
-        float viewDistance = 50f;
+        float viewDistance = 3f;
 
         Vector3[] vertices = new Vector3[rayCount + 1 + 1];
         Vector2[] uv = new Vector2[vertices.Length];
         int[] triangles = new int[rayCount * 3];
-
-        vertices[0] = Vector3.zero;
-        vertices[1] = new Vector3(50, 0);
-        vertices[2] = new Vector3(0, -50);
 
         vertices[0] = origin;
 
