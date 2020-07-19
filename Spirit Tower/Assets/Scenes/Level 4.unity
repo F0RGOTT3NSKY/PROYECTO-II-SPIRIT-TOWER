@@ -194,7 +194,6 @@ GameObject:
   - component: {fileID: 52862359}
   - component: {fileID: 52862358}
   - component: {fileID: 52862357}
-  - component: {fileID: 52862360}
   m_Layer: 0
   m_Name: EnemyFOV
   m_TagString: Untagged
@@ -229,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1055092459}
-  maxAngle: 45
+  maxAngle: 90
   maxRadius: 5
   maxColliders: 20
 --- !u!23 &52862358
@@ -279,25 +278,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52862355}
   m_Mesh: {fileID: 0}
---- !u!95 &52862360
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52862355}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 45328435ddc249f4d909657dd7588f5b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &74535375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,7 +1898,6 @@ GameObject:
   - component: {fileID: 278630540}
   - component: {fileID: 278630539}
   - component: {fileID: 278630538}
-  - component: {fileID: 278630537}
   m_Layer: 0
   m_Name: EnemyFOV
   m_TagString: Untagged
@@ -1940,25 +1919,6 @@ Transform:
   m_Father: {fileID: 516220771}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!95 &278630537
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278630535}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 45328435ddc249f4d909657dd7588f5b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &278630538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15618,7 +15578,7 @@ GameObject:
   - component: {fileID: 1055092459}
   - component: {fileID: 1055092460}
   m_Layer: 0
-  m_Name: ColliderFOV
+  m_Name: PlayerColliderFOV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17967,6 +17927,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1529957217}
   - component: {fileID: 1529957216}
+  - component: {fileID: 1529957215}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -17974,6 +17935,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &1529957215
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529957214}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7fd94d3213171824991aae883adadd82, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &1529957216
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18013,7 +17993,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e37830ef2e13d744cbc80be90be460e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 13d56920ffd401c4086f05373606d552, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
