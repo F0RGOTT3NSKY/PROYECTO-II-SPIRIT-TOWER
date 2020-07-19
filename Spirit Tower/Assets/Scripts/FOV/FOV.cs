@@ -7,7 +7,7 @@ public class FOV : MonoBehaviour
     public Transform player;
     public float maxAngle;
     public float maxRadius;
-    private Vector3 change;
+    public int maxColliders;
 
     private bool isInFOV = false;
 
@@ -31,28 +31,29 @@ public class FOV : MonoBehaviour
         {
             Gizmos.color = Color.green;
         }
-        Gizmos.DrawRay(transform.position, (player.position - transform.position).normalized * maxRadius);
+        Gizmos.DrawRay(transform.position, player.position - transform.position);
 
         Gizmos.color = Color.black;
         Gizmos.DrawRay(transform.position, transform.up * maxRadius);
+
     }
     
-    public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
+    public static bool inFOV(Transform enemy, Transform target, float maxAngle, float maxRadius, int maxColliders)
     {
-        Collider[] overlaps = new Collider[50];
-        int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
-        for (int i = 0; i < count + 1; i++)
+        Collider[] hitColliders = new Collider[maxColliders];
+        int count = Physics.OverlapSphereNonAlloc(enemy.position, maxRadius, hitColliders);
+        for (int i = 0; i < count; i++)
         {
-            if(overlaps[i] != null)
+            if(hitColliders[i] != null)
             {
-                if(overlaps[i].transform == target)
+                if (hitColliders[i].transform == target)
                 {
-                    Vector3 directionBetween = (target.position - checkingObject.position).normalized;
+                    Vector3 directionBetween = (target.transform.position - enemy.transform.position);
                     directionBetween.z *= 0;
-                    float angle = Vector3.Angle(checkingObject.up, directionBetween);
+                    float angle = Vector3.Angle(enemy.up, directionBetween);
                     if(angle <= maxAngle)
                     {
-                        Ray ray = new Ray(checkingObject.position, target.position - checkingObject.position);
+                        Ray ray = new Ray(enemy.position, target.position - enemy.position);
                         RaycastHit hit;
                         if(Physics.Raycast(ray, out hit, maxRadius))
                         {
@@ -69,6 +70,6 @@ public class FOV : MonoBehaviour
     }
     private void Update()
     {
-        isInFOV = inFOV(transform, player, maxAngle, maxRadius);
+        isInFOV = inFOV(transform, player, maxAngle, maxRadius, maxColliders);
     }
 }
