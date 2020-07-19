@@ -49,7 +49,8 @@ public class PlayerMovement : MonoBehaviour
             && currentState != PlayerState.stagger)
         {
             StartCoroutine(AttackCo());
-        }else if(currentState == PlayerState.walk || currentState == PlayerState.idle)
+        }
+        else if (currentState == PlayerState.walk || currentState == PlayerState.idle)
         {
             UpdateAnimationAndMovement();
         }
@@ -93,9 +94,9 @@ public class PlayerMovement : MonoBehaviour
     public void Knock(float KnockTime, float Damage)
     {
         CurrentHealth.RunTimeValue -= Damage;
+        PlayerHealthSignal.Raise();
         if (CurrentHealth.RunTimeValue > 0)
         {
-            PlayerHealthSignal.Raise();
             StartCoroutine(KnockCo(KnockTime));
         }
         else
