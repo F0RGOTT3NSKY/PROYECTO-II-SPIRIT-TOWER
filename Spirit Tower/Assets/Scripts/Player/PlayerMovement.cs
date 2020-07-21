@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerState currentState;            // What stage is currently the player
     public FloatValue CurrentHealth;            // How much health the player has
     public SignalCreator PlayerHealthSignal;    // Signal to update de UI
-    public VectorValue StartingPosition;        // The start position in a specific scene
+    
 
     /*Start is called before the first frame update
     Reference every component in the player  
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         animator.SetFloat("MoveX", 0);
         animator.SetFloat("MoveY", -1);
-        transform.position = StartingPosition.InitialValue;
+        
     }
 
     /*Update is called once per frame
