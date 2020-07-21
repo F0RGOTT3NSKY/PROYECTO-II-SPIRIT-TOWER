@@ -16,6 +16,7 @@ public class FOV : MonoBehaviour
     {
         Alarm = this.GetComponent<AudioSource>();
     }
+    // Debud method to see the lines of the FOV when the player is near 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -42,6 +43,7 @@ public class FOV : MonoBehaviour
         Gizmos.DrawRay(transform.position, transform.up * maxRadius);
 
     }
+    //Creates a RayCastHit to detect if a player is in th FOV 
     public static bool inFOV(Transform enemy, Transform target, float maxAngle, float maxRadius, int maxColliders)
     {
         Collider[] hitColliders = new Collider[maxColliders];
@@ -72,6 +74,7 @@ public class FOV : MonoBehaviour
         }
         return false;
     }
+    // Enable Alarm sound
     private void AlarmActivation()
     {
         if (!isInFOV)
