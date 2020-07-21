@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 677, y: 471}
   m_MaxSize: {x: 14000, y: 14021}
   vertical: 0
-  controlID: 5621
+  controlID: 1149
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 471}
   m_MaxSize: {x: 10000, y: 14021}
   vertical: 1
-  controlID: 5595
+  controlID: 1199
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 221}
   m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
-  controlID: 5596
+  controlID: 1200
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -397,9 +397,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 7892ffff
-      m_LastClickedID: 0
-      m_ExpandedIDs: d290ffff7e92ffffa494ffffca95ffffd496ffffa098ffff789dffffc0a0ffff46a1ffffc6a4ffffecacfffff2c7ffff2cddffff62e1ffff4ce4ffff1ce7fffff2e9ffff9ceaffff12ecffff7cf3ffff14f6ffffc4f9fffff8faffff38510000ec6b00008a7100008c73000012750000de780000dc7e0000
+      m_SelectedIDs: 18e5ffff
+      m_LastClickedID: -6888
+      m_ExpandedIDs: 1ae5ffff4ee8ffffe2e9ffffc0ebffff9ef9ffff32fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -459,9 +459,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.2046704, y: 1.285235, z: -189.29883}
+    m_Target: {x: 1.2999932, y: -1.5372591, z: -191.34766}
     speed: 2
-    m_Value: {x: -2.2046704, y: 1.285235, z: -189.29883}
+    m_Value: {x: 1.2999932, y: -1.5372591, z: -191.34766}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -511,9 +511,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 7.102708
+    m_Target: 14.04756
     speed: 2
-    m_Value: 7.102708
+    m_Value: 14.04756
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -603,20 +603,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefab/SceneRelated
+    - Assets/Prefab/Player
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefab/SceneRelated
+  - Assets/Prefab/Player
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\GitHub\PROYECTO-II-SPIRIT-TOWER\Spirit Tower
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 180}
-    m_SelectedIDs: 564a0000
-    m_LastClickedID: 19030
-    m_ExpandedIDs: 000000002e4a0000304a0000324a0000344a0000364a0000384a00003a4a00003c4a00003e4a0000404a00005c4a000000ca9a3b
+    scrollPos: {x: 0, y: 122}
+    m_SelectedIDs: da470000
+    m_LastClickedID: 18394
+    m_ExpandedIDs: 00000000b2470000b4470000b6470000b8470000ba470000bc470000be470000c0470000c2470000c4470000c647000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -644,7 +644,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002e4a0000304a0000324a0000344a0000364a0000384a00003a4a00003c4a00003e4a0000404a00005c4a000000ca9a3b
+    m_ExpandedIDs: 00000000b2470000b4470000b6470000b8470000ba470000bc470000be470000c0470000c2470000c4470000c647000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000d6e6feff
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -926,10 +926,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 2c5e3ec1702e97d41b9c5795b51001a5,
+  m_AnimatorController: {fileID: 9100000, guid: fc889f3b954512c45a5f49decb734bfa,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 1326211963320966980, guid: 2c5e3ec1702e97d41b9c5795b51001a5,
+  - m_Target: {fileID: -8755488623910419725, guid: fc889f3b954512c45a5f49decb734bfa,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
