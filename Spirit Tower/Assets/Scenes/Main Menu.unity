@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -366,6 +366,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba1265f60c7b1149b4781912b37d38b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FadeInPanel: {fileID: 4458349026310530169, guid: aecdc7e0bb4b5c74cb659203e1fccc51,
+    type: 3}
+  FadeOutPanel: {fileID: 4625009175951856711, guid: a47695280ad04d84c93db183e778a45e,
+    type: 3}
+  FadeWait: 0.33
 --- !u!1 &607645851
 GameObject:
   m_ObjectHideFlags: 0

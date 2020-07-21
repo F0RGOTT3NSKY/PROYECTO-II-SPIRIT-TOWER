@@ -5,13 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject FadeInPanel;
+    public GameObject FadeOutPanel;
+    public float FadeWait;
+    private void Awake()
+    {
+        if(FadeInPanel != null)
+        {
+            GameObject panel = Instantiate(FadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
+            Destroy(panel, 1);
+        }
+    }
+    public IEnumerator FadeCo()
+    {
+        if(FadeOutPanel != null)
+        {
+            Instantiate(FadeOutPanel, Vector3.zero, Quaternion.identity);
+        }
+        yield return new WaitForSeconds(FadeWait);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Level1");
+        while (!asyncOperation.isDone)
+        {
+            yield return null;
+        }
+    }
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         
@@ -19,7 +40,8 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene("Level1");
+        //SceneManager.LoadScene("Level1");
+        StartCoroutine(FadeCo());
     }
     public void QuitToDesktop()
     {

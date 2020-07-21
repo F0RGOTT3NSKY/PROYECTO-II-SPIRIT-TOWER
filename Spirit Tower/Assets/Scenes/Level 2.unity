@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6512,12 +6512,12 @@ PrefabInstance:
     - target: {fileID: 2650496325581284577, guid: f3c758b28a888b94ba5d2ad4cef0856a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.79
+      value: -2.74
       objectReference: {fileID: 0}
     - target: {fileID: 2650496325581284577, guid: f3c758b28a888b94ba5d2ad4cef0856a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.65
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2650496325581284577, guid: f3c758b28a888b94ba5d2ad4cef0856a,
         type: 3}
@@ -6798,6 +6798,23 @@ PrefabInstance:
         type: 3}
       propertyPath: SceneToLoad
       value: Level 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607546809332850801, guid: d7213151734364047a33a1d546ad45e6,
+        type: 3}
+      propertyPath: FadeInPanel
+      value: 
+      objectReference: {fileID: 4458349026310530169, guid: aecdc7e0bb4b5c74cb659203e1fccc51,
+        type: 3}
+    - target: {fileID: 2607546809332850801, guid: d7213151734364047a33a1d546ad45e6,
+        type: 3}
+      propertyPath: FadeOutPanel
+      value: 
+      objectReference: {fileID: 4625009175951856711, guid: a47695280ad04d84c93db183e778a45e,
+        type: 3}
+    - target: {fileID: 2607546809332850801, guid: d7213151734364047a33a1d546ad45e6,
+        type: 3}
+      propertyPath: FadeWait
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 7670384072264595162, guid: d7213151734364047a33a1d546ad45e6,
         type: 3}
