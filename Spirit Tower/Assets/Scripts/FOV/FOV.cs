@@ -9,9 +9,10 @@ public class FOV : MonoBehaviour
     public float maxRadius;
     public int maxColliders;
     public AudioSource Alarm;
-
     public bool isInFOV = false;
-    void Start()
+
+    // Start is called before the first frame update
+    private void Start()
     {
         Alarm = this.GetComponent<AudioSource>();
     }
@@ -33,7 +34,6 @@ public class FOV : MonoBehaviour
         }
         else
         {
-            //Alarm.Play();
             Gizmos.color = Color.green;
         }
         Gizmos.DrawRay(transform.position, player.position - transform.position);
@@ -42,7 +42,7 @@ public class FOV : MonoBehaviour
         Gizmos.DrawRay(transform.position, transform.up * maxRadius);
 
     }
-    public static bool inFOV(Transform enemy, Transform target, float maxAngle, float maxRadius, int maxColliders, AudioSource alarm)
+    public static bool inFOV(Transform enemy, Transform target, float maxAngle, float maxRadius, int maxColliders)
     {
         Collider[] hitColliders = new Collider[maxColliders];
         int count = Physics.OverlapSphereNonAlloc(enemy.position, maxRadius, hitColliders);
@@ -72,8 +72,17 @@ public class FOV : MonoBehaviour
         }
         return false;
     }
+    private void AlarmActivation()
+    {
+        if (!isInFOV)
+        {
+            Alarm.Play();
+        }
+    }
+    // Update is called once per frame
     private void Update()
     {
-        isInFOV = inFOV(transform, player, maxAngle, maxRadius, maxColliders, Alarm);
+        isInFOV = inFOV(transform, player, maxAngle, maxRadius, maxColliders);
+        AlarmActivation();
     }
 }
