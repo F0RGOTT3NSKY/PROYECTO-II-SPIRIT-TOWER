@@ -19,22 +19,16 @@ public class Fire_Trap : MonoBehaviour
     {
         
     }
-
+    // Enable the collider2D and the Audio Source
     private void FireON()
     {
         FireCannon.enabled = true;
         FireSound.Play();
     }
-
+    // Disable the collider2D and the Audio Source
     private void FireOFF()
     {
         FireCannon.enabled = false;
         FireSound.Stop();
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        Destroy(collision.gameObject);
-    }
-
 }

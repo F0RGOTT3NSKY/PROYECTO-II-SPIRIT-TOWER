@@ -18,20 +18,16 @@ public class Spike_Trap : MonoBehaviour
     {
         
     }
+    // Enable the collider2D and the Audio Source
     private void SpikesON()
     {
         SpikeTrap.enabled = true;
         SpikeSound.Play();
     }
-
+    // Disable the collider2D and the Audio Source
     private void SpikesOFF()
     {
         SpikeTrap.enabled = false;
         SpikeSound.Stop();
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        Destroy(collision.gameObject);
     }
 }

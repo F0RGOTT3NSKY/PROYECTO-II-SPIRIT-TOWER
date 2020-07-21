@@ -19,22 +19,16 @@ public class Taser_Trap : MonoBehaviour
     {
 
     }
-
+    // Enable the collider2D and the Audio Source
     private void TaserON()
     {
         TaserTrap.enabled = true;
         TaserSound.Play();
     }
-
+    // Disable the collider2D and the Audio Source
     private void TaserOFF()
     {
         TaserTrap.enabled = false;
         TaserSound.Stop();
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        Destroy(collision.gameObject);
-    }
-
 }
