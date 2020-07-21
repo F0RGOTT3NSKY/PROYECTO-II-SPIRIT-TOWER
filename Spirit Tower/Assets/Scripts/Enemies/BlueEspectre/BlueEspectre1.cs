@@ -10,6 +10,7 @@ public class BlueEspectre1 : EnemyPath
     public int CurrentPoint;        //Current point in the patrol path
     public Transform CurrentGoal;   //Next point to travel
     public float RoundingDistance;  //Radius of proximity to the goal point.
+    public bool WasChasing = false;
 
     /*Check the distance between the enemy and the player
     * If the player is close enough, the enemy will chase it
@@ -28,22 +29,42 @@ public class BlueEspectre1 : EnemyPath
             if(CurrentState == EnemyState.idle || CurrentState == EnemyState.walk &&
                 CurrentState != EnemyState.stagger)
             {
-                Vector3 temp = Vector3.MoveTowards(transform.position, GridBlue1.PatrolBlue1[0].worldPosition, MoveSpeed * Time.deltaTime * 2);
+                WasChasing = true;
+                Vector3 temp = Vector3.MoveTowards(transform.position, GridGray.PatrolGray1[0].worldPosition, MoveSpeed * Time.deltaTime * 2);
                 ChangeAnimation(temp - transform.position);
                 MyRigidBody.MovePosition(temp);
                 animator.SetBool("StartingWalk", true);
             }
-        } else if (Vector3.Distance(Target.position, transform.position) > ChaseRadius)
+        } 
+        else if (Vector3.Distance(Target.position, transform.position) > ChaseRadius)
         {
-            if (Vector3.Distance(transform.position, PatrolPath[CurrentPoint].position) > RoundingDistance)
+            if (WasChasing)
             {
-                Vector3 temp = Vector3.MoveTowards(transform.position, PatrolPath[CurrentPoint].position, MoveSpeed * Time.deltaTime);
-                ChangeAnimation(temp - transform.position);
-                MyRigidBody.MovePosition(temp);
+                if (GridBack.Backtracking1.Count != 0)
+                {
+                    Vector3 temp = Vector3.MoveTowards(transform.position, GridBack.Backtracking1[0].worldPosition, MoveSpeed * Time.deltaTime);
+                    ChangeAnimation(temp - transform.position);
+                    MyRigidBody.MovePosition(temp);
+                }
+                else
+                {
+                    WasChasing = false;
+                    CurrentGoal = PatrolPath[1];
+                }
             }
             else
             {
-                ChangeGoal();
+                if (Vector3.Distance(transform.position, PatrolPath[CurrentPoint].position) > RoundingDistance)
+                {
+                    Vector3 temp = Vector3.MoveTowards(transform.position, PatrolPath[CurrentPoint].position, MoveSpeed * Time.deltaTime);
+                    ChangeAnimation(temp - transform.position);
+                    MyRigidBody.MovePosition(temp);
+                }
+                else
+                {
+                    //Changing or reseting the goal if the enemy arrive at it
+                    ChangeGoal();
+                }
             }
         }
     }
