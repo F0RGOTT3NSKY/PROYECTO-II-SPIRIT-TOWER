@@ -7,25 +7,26 @@ using UnityEngine;
 
 public class RatMovementScript : Enemy
 {
-    public Animator anim;
-    public Rigidbody2D colision;
+    public Animator anim; //Define el animator para la rata
+    public Rigidbody2D colision;// Le da colisiones
     private int cycles;
     public int Velocidad;
     public Vector2 random;
     private bool derecha = true;
+
     void Start()
     {
-        colision = GetComponent<Rigidbody2D>();
+        colision = GetComponent<Rigidbody2D>();//Inicializa las colisiones
         random = Random.insideUnitCircle;
         random = random.normalized;
         Run(random);
         cycles = 0;
     }
-    private void Run(Vector2 R)
+    private void Run(Vector2 R)// Le da velocidad
     {
         colision.velocity = R * MoveSpeed;
     }
-    private void Flip()
+    private void Flip()// Voltea la rata en función de su dirección de movimiento
     {
         // Cambia la definicion de la direccion de la rata
         derecha = !derecha;
@@ -37,7 +38,7 @@ public class RatMovementScript : Enemy
     }
     void Update()
     {
-        if (cycles == Velocidad)
+        if (cycles == Velocidad)//Llama la función correr si el movimiento previo ya ha sido completado
         {
             random = Random.insideUnitCircle;
             random = random.normalized;
@@ -59,7 +60,7 @@ public class RatMovementScript : Enemy
         {
             cycles++;   
         }
-        anim.SetFloat("MSpeed", Mathf.Abs(random.magnitude));
+        anim.SetFloat("MSpeed", Mathf.Abs(random.magnitude));// Define la magnitud de la velocidad para el animador de la rata
     }
     
 }
