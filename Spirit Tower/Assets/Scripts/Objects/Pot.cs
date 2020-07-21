@@ -6,16 +6,12 @@ public class Pot : MonoBehaviour
 {
     //Create animatior variable
     private Animator animator;
-    
+    public LootTable ThisLoot;
+
     // Asign the animator variable at the start of the scene
     void Start()
     {
         animator = GetComponent<Animator>();
-    }
-    
-    void Update()
-    {
-        
     }
 
     //This method allow the pot to set the animation of breaking and start the corutine
@@ -29,6 +25,19 @@ public class Pot : MonoBehaviour
     IEnumerator BreakCo()
     {
         yield return new WaitForSeconds(.5f);
+        CreateLoot();
         this.gameObject.SetActive(false);
+    }
+
+    public void CreateLoot()
+    {
+        if (ThisLoot != null)
+        {
+            PowerUp currentDrop = ThisLoot.LootPowerUp();
+            if (currentDrop != null)
+            {
+                Instantiate(currentDrop.gameObject, transform.position, Quaternion.identity);
+            }
+        }
     }
 }

@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     public PlayerState currentState;            // What stage is currently the player
     public FloatValue CurrentHealth;            // How much health the player has
     public SignalCreator PlayerHealthSignal;    // Signal to update de UI
+    public Inventory PlayerInventory;
+    public SpriteRenderer ReceivedItemSprite;
 
     /*Start is called before the first frame update
     Reference every component in the player  
@@ -40,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
     */
     void Update()
     {
+        if (currentState == PlayerState.interact)
+        {
+            return;
+        }
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
@@ -62,7 +68,30 @@ public class PlayerMovement : MonoBehaviour
         yield return null;
         animator.SetBool("Attack", false);
         yield return new WaitForSeconds(.2f);
-        currentState = PlayerState.walk;
+        if (currentState != PlayerState.interact)
+        {
+            currentState = PlayerState.walk;
+        }
+    }
+
+    public void RaiseItem()
+    {
+        if (PlayerInventory.CurrentItem != null)
+        {
+            if (currentState != PlayerState.interact)
+            {
+                animator.SetBool("GetItem", true);
+                currentState = PlayerState.interact;
+                ReceivedItemSprite.sprite = PlayerInventory.CurrentItem.ItemSprite;
+            }
+            else
+            {
+                animator.SetBool("GetItem", false);
+                currentState = PlayerState.idle;
+                ReceivedItemSprite.sprite = null;
+                PlayerInventory.CurrentItem = null;
+            }
+        }
     }
 
     // Update the animation acording to the movement on the x and y axis
