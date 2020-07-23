@@ -19,3 +19,7 @@ Archivos relacionados (Spirit Tower/Assets/Scripts/Player):
 * PlayerMovement.cs
 * HeartManager.cs
 * ContextClue.cs
+
+PlayerMovement.cs:
+
+En este se encuentra la mayor parte de código con respecto al jugador. Primero, se define ´enum´
