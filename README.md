@@ -192,7 +192,7 @@ Todos los enemigos heredan de EnemyPath, específicamente para utilizar el méto
 
 Este método cambia el valor de cuál punto se debe seguir en el patrullaje, si este es el último, la ruta se reinicia cambiando el valor de CurrentGoal al primer punto de patrullaje.
 
-### RedSpecte.cs:
+### RedSpectre.cs:
 
 La diferencia de este es que puede lanzar proyectiles al jugador y lo hace de la siguiente manera. Primero, se agregan las siguientes variables:
 *	proyectile: proyectil que disparará el enemigo.
