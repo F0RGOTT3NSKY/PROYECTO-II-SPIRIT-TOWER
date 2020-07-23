@@ -10,6 +10,7 @@ Primero se tiene que tener los siguientes programas instalados en el ordenador:
 Luego se tiene que descargar el repositorio, las opciones de descarga son las siguientes:
 
 * Usando GitHub Desktop se descarga en https://desktop.github.com usando la opcion de clonar repositorio con URL, la cual es la siguiente https://github.com/R3DP4R4D153/PROYECTO-II-SPIRIT-TOWER
+![GH Destop](https://github.com/R3DP4R4D153/PROYECTO-II-SPIRIT-TOWER/blob/master/Wiki/Readme/GitHub_Desktop.jpg)
 * Usando GitHub Kraken se descarga en https://www.gitkraken.com/download usando la opcion de clonar repositorio con URL, la cual es la siguiente https://github.com/R3DP4R4D153/PROYECTO-II-SPIRIT-TOWER
 * En el repositorio en el boton "Code" de color verde y dar click en "Download ZIP"
 
