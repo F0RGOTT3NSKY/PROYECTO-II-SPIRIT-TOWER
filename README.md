@@ -12,4 +12,10 @@ Luego se tiene que descargar el repositorio, las opciones de descarga son las si
 * En el repositorio en el boton "Code" de color verde y dar click en "Download ZIP"
 
 
-##Movimiento del jugador:
+Movimiento del jugador:
+
+Archivos relacionados (Spirit Tower/Assets/Scripts/Player):
+
+* PlayerMovement.cs
+* HeartManager.cs
+* ContextClue.cs
