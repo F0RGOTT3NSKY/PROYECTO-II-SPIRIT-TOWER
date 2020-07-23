@@ -69,3 +69,32 @@ KnockCo(float KnockTime):
 
 En este método se realiza el retroceso si myRigidBody no es equivalente a null para evitar un NullReferenceObjection. De ser así, se espera lo que dure el KnockTime, la velocidad d myRigidBody se iguala a 0, se cambia el estado del jugador a “idle” y se vuelve a igualar la velocidad a 0. Es decir, cuando el jugador reciba daño, se moverá sin interrupción dependiendo lo que dure el KnockTime.
 
+HeartManager.cs:
+Esta clase permite actualizar la vida del jugador cuando sea necesario. Primero se instancian las variables a utilizar y todas son públicas, lo que permite cambiarlas desde el inspector de ser necesario.
+
+* Hearts: Lista de cuántos corazones serán usados.
+* FullHeart: Sprite del corazón lleno.
+* HalfHeart: Sprte del corazón a la mitad.
+* EmptyHeart: Sprite del corazón vacío.
+* HeartContainers: Cuantos contenedores tiene el jugador.
+* PlayerCurrentHelath: Salud actual del jugador.
+
+Start():
+
+Este inicializa el método InitHearts() para que la interfaz de la salud esté antes del primer fotograma.
+
+InitHearts():
+
+Este método realiza un bucle for dependiendo de la cantidad inicial de la variable HeartContainers y pone un corazón lleno por cada iteración relaizada.
+
+UpdateHearts():
+
+Este método actualiza la vida del jugador cada vez que recibe daño u obtiene algún corazón como ítem. Para ello, se crea una variable temporal siendo la vida actual del jugador dividida entre 2, luego se realiza un bucle for para saber cuál Sprite se debe colocar.
+
+ContextClue.cs:
+Esta clase permite mostrar cuando el jugador puede interactuar con algún objeto en escena. Para ello se crean las siguientes variables:
+
+* contextClue: Esta es creada como un GameObject para evitar conflictos de Unity.
+* ContextActive: Permite activar o desactivar de ser necesario. Por defecto, equivale a false.
+
+Esta clase es sencilla y no necesita un método de Start, solo se utiliza un método llamado ChangeContext(). Primero, se cambia el valor que tenga la variable ContextActive, de ser “true”, se activa, de lo contrario, se desactiva.
