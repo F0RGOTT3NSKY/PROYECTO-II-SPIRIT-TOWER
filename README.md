@@ -209,12 +209,157 @@ A este método se le agrega la comprobación si el enemigo puede disparar o no. 
 
 ## Comportamiento de objetos:
 Archivos relacionados (Spirit Tower/Assets/Scripts/Objects):
+
+* Coin.cs
+* FireProyctile.cs
+* Heart.cs
+* Interactable.cs
+* Pot.cs
+* PowerUp.cs
+* Proyectile.cs
+* TreasureChest.cs
+
+### Coin.cs:
+
+Esta clase hereda de PowerUp, próximamente explicada, y su objetivo es aumentar la cantidad de monedas que el jugador tenga cuando recoge alguna tirada por el mapa. Para ello se hace uso de la siguiente variable:
+
+* PlayerInventory: El inventario del jugador.
+
+* OnTriggerEnter2D(Collider2D other):
+
+Este método revisa si quien está entrando es el jugador y si aun no se ha entrado en el área de la moneda. De ser así, el contador de monedas del jugador aumentará en 1, la señar de PowerUp se ejecutará y la moneda es destruida.
+
+### FireProyectile.cs:
+
+Esta clase hereda de Proyectile y se le pueden agregar efectos de partículas u otros comportamientos que el programador desee dado que sus métodos están vacíos.
+
+### Heart.cs:
+
+Esta clase hereda de PowerUp y representa los corazones por el mapa, cuando estos son obtenidos por el jugador, su vida aumentará dependiendo de su valor. Para ello se instancian las siguientes variables.
+
+* PlayerHealth: Representa la salud del jugador.
+* AmountToIncrease: Cantidad de vida que el jugador recibirá.
+* HeartContainers: Cantidad de contenedores de vida que tenga el jugador.
+
+* OnTriggerEnter2D(Collider2D other):
+
+Este método se encarga de si un jugador entra en la zona de contacto, su vida aumentará. Para ello se valida que sea un jugador y si no ha sido activado. Luego, se obtiene el valor de ejecución de la vida y se aumenta según lo que valga AmountToIncrease. Después se verifica que si el valor de ejecución es mayor al de los contenedores multiplicado por dos (dado que 1 representa medio corazón), este será reasignado a su valor máximo (para evitar que el jugador tenga más vida que la mostrada en la interfaz). De no ser así, se activa la señar del PowerUp y el objeto es destruido.
+
+### Interactable.cs:
+
+Esta clase representa cualquier objeto con el que se pueda interactuar. Para ello se crean las siguientes variables:
+
+* PlayerInRange: Revisa si el jugador está en rango para realizar una acción al objeto.
+* Context: Señal para mostrarle al usuario que puede interactuar con dicho objeto.
+
+* OnTriggerEnter2D(Collider2D other):
+
+Este método revisa cuando un jugador está en el rango para ser accionando y se mantiene encendido siempre y cuando el personaje se mantenga dentro del área.
+
+* OnTriggerExit2D(Collider2D other):
+
+Al contrario que el anterior, este desactiva la señar cuando el jugador salga de la zona de activación del objeto.
+
+### Pot.cs
+
+Esta clase representa todas las vasijas del juego y tiene diferentes métodos con los cuales se pueden interactuar. Primero, se instancian las siguientes variables:
+
+* animator: Variable para poder ejecutar las animaciones de la vasija.
+* ThisLoot: Variable que añade objetos dentro de la vasija (como los corazones)
+
+Al inicio, se asigna la variable animator a su respectivo componte.
+
+* Smashing():
+
+Este método permite romper la vasija activando la animación de romper y ejecutando la corutina BreakCo()
+
+* BreakCo():
+
+Esta corutina espera 0.5 segundos (tiempo que dura la animación) y seguidamente, se obtiene el objeto contenido con el método CreateLoot() y por último, la vasija desaparece.
+
+* CreateLoot():
+
+Este método se encarga de revisar si ThisLoot no es equivalente a null, de ser así se crea una variable PowerUp con algún objeto añadido por el programador. Y si este último también es diferente a null, se instancia.
+
+### PowerUp.cs:
+
+Esta clase tiene como único objetivo crear una señal con el nombre de PowerUpSignal.
+
+### Proyctile.cs:
+
+Esta es la clase padre de todos los proyectiles y toma las siguientes variables:
+
+* Velocity: Velocidad del proyectil
+* DirectionToMove: La dirección que el proyectil deba seguir.
+* LifeTime: Tiempo por el cual el proyectil estará en pantalla.
+* LifeTimeSec: Tiempo por el cual el proyectil estará en pantalla, manejado dentro de la clase.
+* myrigidbody2D: Permite darle físicas al proyectil.
+
+* Start():
+
+En este método, asignan los componentes necesarios a las variables. Siendo estas myrigidbody2D y LifeTimeSec, que es equivalente a LifeTime.
+
+* Update():
+
+En este método, se disminuye el tiempo del proyectil y cuando este llega o es menor a 0, es destruido.
+
+* Fire(Vector2 InitialDir):
+
+Este método logra que el proyectil se mueva en la dirección del vector multiplicándolo por Velocity.
+
+* OnTriggerEnter2D(Collider2D collision):
+
+Este método destruye el objeto si entra en contacto con otro.
+
+### TreasureChest:
+
+Esta clase hereda de Interactable y toma por variables las siguientes:
+
+* Content: Contenido del cofre.
+* PlayerInventory: Inventario del jugador.
+* IsOpen: Booleano que permite saber si el cofre ya está abierto.
+* RaiseItem: Señal perteneciente al cofre.
+* DialogBox: Caja de diálogo en la interfaz para insertar texto.
+* DialogText: Texto a mostrar en interfaz.
+* animator: variable para ejecutar animaciones.
+
+En el método de Start, se asigna el componente específico para la variable animator.
+
+* Update():
+
+Este método permite saber si el jugador está a rango o no para ejecutar los métodos necesarios. Si no está abierto, se ejecuta el OpenChest(), si ya lo está, el ChestAlreadyOpened().
+
+* OpenChest():
+
+Este método ejecuta todo lo necesario para que el cofre sea abierto. Para ello hace una serie de instrucciones en el siguiente orden:
+1) Se activa el DialogBox.
+2) Se obtiene la descripción de Content.
+3) Se añade el ítem al inventario del jugador.
+4) Se indica que el CurrentItem del jugador sea igual a Content.
+5) Se activa la señal.
+6) Por último, se cambia la variable del animador “Opened” a true.
+
+* ChestAlreadyOpened():
+
+Este método asegura que el jugador realice la animación para levantar un ítem. Para ello, primero indica que el jugador ya no está a rango, luego, desactiva el DialogBox y por último, RaiseItem activa su señal.
+
+* OnTriggerEnter2D(Collider2D other):
+
+Este método se encarga de activar la señal cuando el jugador está a rango, siemrpe y cuando el jugador esté adentro de la zona.
+
+* OnTriggerExit2D(Collider2D other):
+
+Al contrario del otro, este desactiva el context cuando el jugador abandona la zona.
+
+
 ## Movimiento de la rata:
+
 * Para moverse, la rata usa la función "Run(Vector3 R)". La cual modifica su velocidad. Si se desea modificar su velocidad, se debe tener en cuenta que la rata hereda del script de enmemy, con lo cual modifica su velocidad de la misma forma que lo hace un enemigo cualquiera. La rata se mueve en direcciones aleatorias. Si se deseara una dirección específica se debe el parámetro que se le agrega a "Run()", al cual se le da como parámetro un Vector3 generado aleatoriamente usando "random". Para darle una dirección específica se debe crear y añadir como parámetro un Vector3 con magnitud y dirección predeterminadas.
 
 * La función "Flip()" permite a la rata voltearse segun la dirección en la que se mueva, usando un transform y un vector3 apuntando en la dirección del movimiento. No toma ningun parámetro
 
 ## Transiciones de escena
+
 * La función Awake() crea a un GameObject conocido como "panel", el cual a su Instancia un panel creado previamente en un canvas. El panel posee una animación tipo "Fade In", que hace transición de un cuadro en blanco a uno transparente. Si se deseara cambiar la animación, se debe crear un panel prefabricado personalizado y arrastrarlo a la casilla de "panel" bajo el script en el inspector de unity.
 
 * La función FadeCo() realiza un proceso similar para el "Fade Out" sin embargo el panel necesario presenta la animación anterior al revés. Para cambiar la animación se realiza el mismo proceso anterior. Si se desea cambiar el tiempo de espera de transición se debe cambiar el float definido como "FadeWait", el cual puede ser cambiado en unity en la sección del script del inspector, o bien, se le puede dar un valor fijo cambiando el parametro en el "yield return new WaitForSeconds(FadeWait)" de "FadeWait" por un valor float cualquiera. Esta función tambien determina qué nivel se va a cargar. En la sección del script del inspector de unity se puede modificar la variable tipo string "Scene to Load" la cual determina el proximo nivel (Se debe poner el nombre exacto de la escena que se desea cargar)
