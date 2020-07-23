@@ -5,6 +5,7 @@ Primero se tiene que tener los siguientes programas instalados en el ordenador:
 * Visual Studio 2019 Version 16.6.4 se descarga en https://visualstudio.microsoft.com/es/downloads/
 ![VS_Download](https://github.com/R3DP4R4D153/PROYECTO-II-SPIRIT-TOWER/blob/master/Wiki/Readme/VS_Download.jpg)
 * Unity Version 2019.4.3f1 se descarga en https://unity3d.com/get-unity/download
+![Unity_Download](https://github.com/R3DP4R4D153/PROYECTO-II-SPIRIT-TOWER/blob/master/Wiki/Readme/Unity_Download.jpg)
 
 Luego se tiene que descargar el repositorio, las opciones de descarga son las siguientes:
 
