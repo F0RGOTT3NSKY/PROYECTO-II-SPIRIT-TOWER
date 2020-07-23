@@ -368,41 +368,102 @@ Archivos relacionados (Spirit Tower/Assets/Scripts/ScriptableObjects):
 Estos archivos sirven para crear variables específicas que pueden ser usadas en toda la solución. Cada uno de estos no tiene ningún método propio de Unity, por ende, no pueden ser aplicados a objectos como scripts. Además, todos necesitan heredar de ScriptableObject o de ISerializationCallbackReceiver y tener esta línea [CreateAssetMenu] antes de instanciar la clase.
 
 ### FloatValue.cs:
+
 Esta clase crea variables tipo float, y utiliza lo siguiente:
+
 * InitialValue: Valor inicial introducido por el programador.
 * RunTimeValue: Valor en tiempo real de la ejecución. No aparece en el Inspector.
 * OnAfterDeserialize():
+
 Este método se asegura que el valor inicial no sea cambiado en la ejecución del programa.
+
 * OnBeforeSerialize():
+
 Método necesario por heredar de ISerializationCallbackReceiver.
+
 ### Inventory.cs:
+
 Esta clase utiliza las siguientes variables:
+
 * CurrentItem: Ítem que será agregado al inventario .
 * Items: Lista de ítems definidos por el programador.
 * NumberOfKeys: Cantidad de llaves pertenecientes al jugador
 * coins: Cantidad de monedas pertenecientes al jugador.
 * AddItem(Item ItemToAdd):
+
 Este método añade el ítem a la lista o a la cantidad de llaves utilizando verificaciones. Para saber si es una llave o no, se cambia desde el editor de Unity.
+
 ### Item.cs:
+
 Esta clase tiene 3 variables públicas pertenecientes a cualquier ítem. Estas son:
+
 * ItemSprite: Sprite del item a agregar
 * ItemDescription: Descripción de este ítem
 * isKey: Booleano que indica si es una llave o no
+
 ### LootTable.cs:
 Esta clase es la encargada de crear un botín para cualquier objeto si este contiene la opción de ser agregado. Primero necesitamos crear una clase serializable llamada Loot que contenga las siguientes variables:
+
 * ThisLoot: Variable tipo PowerUp.
 * LootChange: porcentaje de obtener este objeto.
+
 Luego, se instancia la clase y esta debe tener una lista con elementos tipo Loot, creados anteriormente.
+
 * LootPowerUp():
+
 Este método se encarga de soltar un objeto dependiendo de su probabilidad. Para ello, se instancian dos variables, una que contenga el peso de la probabilidad y otra un valor entre 0 y 100. Luego, se itera entre 0 y la cantidad de ítems en la lista Loot, al peso se le suma la probabilidad de obtener el item de la lista y si este valor es mayor al peso, se obtiene este item, de lo contrario, al finalizar la iteración, no se obtiene nada, especificado con un null para evitar excepciones por referencia.
+
 ### SignalCreator.cs
+
 Esta clase es la encargada de crear las señales y cuales deben ser escuchadas con una lista de SignalListeners.
+
 * Raise():
+
 Este método itera en desde el último elemento hasta el primero para poder obtener todas las señales y coincidir si se llama a una de estas.
+
 * RegisterListener(SignalListener listener):
+
 Este método añade la variable listener a la lista inicial.
+
 * DeRegisterListener(SignalListener listener).
+
 Este método elimina la variable listener de la lista inicial.
+
+## Pertenecientes a varios objetos en el juego
+
+Archivos relacionados (Spirit Tower/Assets/Scripts):
+
+* KnockBack.cs
+* SignalListener.cs
+
+### KnockBack.cs:
+
+Esta clase es la encargada de aplicar el daño y el retroceso a los objetos que puedan aplicarse algún tipo de física. Para ello necesita 3 variables:
+
+* Thrust: Potencia del retroceso al recibir daño.
+* KnockTime: Tiempo de retroceso.
+* Damage: Daño infligido.
+* OnTriggerEnter2D(Collider2D other):
+
+Este es el único método para realizar la función deseada y para ello requiere ciertas verificaciones. La primera es saber si el objeto puede o no ser rompible y de ser así, aplica el efecto de romper. Luego, se asegura que sea other sea un jugador o un enemigo, se instancia un rigidbody2D perteneciente a other con el nombre de hit. Luego, verifica que este no sea null y se calcula la fuerza de retroceso utilizando la distancia entre other y quien esté infligiendo el retroceso. A continuación, se verifica que solamente sea un enemigo y que sea su hitbox de daño, de ser así le cambia el estado a stagger y le aplica daño, de no ser así, se evalúa si es el jugador. Por último, se verifica que el estado del jugador sea cualquier otro excepto de stagger (para evitar acorralamientos) y de cumplirse está condición, el jugador recibe el daño.
+
+### SingalListener.cs:
+
+Esta clase es la encargada de asignar señales y estar pendientes de ellas si el objeto lo requiere. Se necesitan dos variables:
+
+* signal: Variable que sea una señal.
+* SignalEvent: Permite utilizar los eventos en Unity.
+* OnSignalRaise():
+
+Al ser llamado externamente, invoca el evento de la señal.
+
+* OnEnable():
+
+Envía la señal a la lista de listeners
+
+* OnDisable():
+
+Elimina la señal de la lista de listeners.
 
 
 ## Movimiento de la rata:
