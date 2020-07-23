@@ -22,4 +22,11 @@ Archivos relacionados (Spirit Tower/Assets/Scripts/Player):
 
 PlayerMovement.cs:
 
-En este se encuentra la mayor parte de código con respecto al jugador. Primero, se define ´enum´
+En este se encuentra la mayor parte de código con respecto al jugador. Primero, se define enum con el nombre de PlayerState y este contiene los estados que puede estar el jugador en ciertos momentos durante la partida. Luego definimos una serie de variables públicas:
+
+* speed: Velocdad del jugador.
+* currentState: Estado del jugador en cierto momento.
+* CurrentHealth: Salud actual del jugador.
+* PlayerHealthSignal: Señal para actualizar el interfaz de salud.
+* PlayerInventory: Inventario del jugador.
+* ReceivedItemSprite: Sprite de cualquier ítem recibido.
