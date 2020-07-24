@@ -479,3 +479,25 @@ Elimina la señal de la lista de listeners.
 * La función FadeCo() realiza un proceso similar para el "Fade Out" sin embargo el panel necesario presenta la animación anterior al revés. Para cambiar la animación se realiza el mismo proceso anterior. Si se desea cambiar el tiempo de espera de transición se debe cambiar el float definido como "FadeWait", el cual puede ser cambiado en unity en la sección del script del inspector, o bien, se le puede dar un valor fijo cambiando el parametro en el "yield return new WaitForSeconds(FadeWait)" de "FadeWait" por un valor float cualquiera. Esta función tambien determina qué nivel se va a cargar. En la sección del script del inspector de unity se puede modificar la variable tipo string "Scene to Load" la cual determina el proximo nivel (Se debe poner el nombre exacto de la escena que se desea cargar)
 
 * La función OnTriggerEnter2D(Collider2D other) se define el punto de salida del nivel mediante un box collider 2D colocado en la salida. Este box collider solo reaccionará al del jugador debido al CompareTag("Player"), si se desea que otro elemento active la transición, se debe cambiar el string "Player" por algún otro Tag. Al detectar el tag correcto en el box collider, inicia una co-rutina que llama a FadeCo()
+
+## Pathfidning:
+
+Archivos relacionados (Spirit Tower/Assets/Scripts/PathFinding).
+* Node.cs
+* Grid.cs
+* Pathfinding.cs
+
+### Node.cs:
+
+Esta clase es la encargada de generar los nodos dentro el grid. Necesita las siguientes variables para ejecutar con deseo el pathfinding:
+
+* walkable: permite saber si por el nodo se puede pasar o no.
+* worldPosition: Posición del nodo respecto al mundo.
+* gridX: Valor “X” según el grid.
+* gridY: Valor “Y” según el grid.
+* gCost: Peso g del nodo
+* hCost: Peso heurístico del nodo
+* parent: Nodo padre del próximo nodo.
+
+Luego se realiza la construcción del nodo utilizando las variables walkable, worldPosition, gridX y gridY. Por último, se calcula el valor de fCost sumando hCost y gCost.
+
