@@ -503,6 +503,7 @@ Luego se realiza la construcción del nodo utilizando las variables walkable, wo
 
 ### Grid.cs:
 Esta clase se encarga de crear un grid del tamaño que el usuario quiera. Además, necesita las siguientes variables:
+
 * UnwalkableMask: partes por las cuales no se puede caminar.
 * GridWorldSize: vector 2 que indica el tamaño del grid.
 * NodeRadius: Radio de cada nodo.
@@ -511,6 +512,7 @@ Esta clase se encarga de crear un grid del tamaño que el usuario quiera. Ademá
 * GridSizeX: Tamaño del grid en el eje x.
 * GridSizeY: Tamaño del grid en el eje y.
 * path: camino final entre los dos puntos.
+
 
 * Awake():
 
