@@ -533,3 +533,28 @@ Este método retorna el nodo en la posición con respecto al mundo utilizando po
 * OnDrawGizmos():
 
 Este método dibuja cubos en el editor pintándolos de diferente color para saber si se puede pasar por ese nodo o no. Los de color blanco significan caminables, los rojos los que no y los azules, representan al pathfinding. Esto se logra iterando en el tamaño del grid en los ejes “X” y “Y.
+
+### Pathfinding.cs:
+Esta clase realiza el algoritmo y necesita un buscador, un objetivo y un grid. En el método Awake, se asigna el componente Grid a la variable grid.
+
+* Update():
+
+Este método actualiza en cada fotograma, el pathfinding utilizando el método FindPath(posición, posicion), tomando como argumentos dos posiciones en el grid.
+
+* FindPath(Vector3 startPos, Vector3 targetPos):
+
+Para encontrar el camino más corto entre estos dos vectores, se realiza el siguiente algoritmo:
+
+1. Se crean dos nodos diferentes para saber la posición, respecto al mundo, de los vectores ingresados.
+2. Se crea una lista de nodos (Lista abierta) donde se ingresarán todos los posibles nodos a transportarse.
+3. Se crea un Hashset de nodos (Lista cerrada) que contiene los nodos pertenecientes a la ruta más corta.
+4. Se ingresa el nodo del startPos en la lista abierta.
+5. Se itera en la lista abierta siempre y cuando tenga como mínimo un elemento.
+6. Se instancia un nodo (node) con el valor del primero elemento de la lista abierta.
+7. Se vuelve a iterar desde 1 hasta el largo de la lista abierta – 1 con una variable i.
+8. Si el valor de f del nodo en la posición i es mayor al de node o tienen el mismo valor, entonces si el valor de h del nodo i es menor al de node, node será igual al nodo i.
+9. Se elimina este nodo de la lista abierta y es añadido a la cerrada.
+10. Si el nodo es el del objetivo, se llama a la función RetracePath(startNode, targetNode), de no ser así, se buscan los vecino del nodo. Este será ignorado si no se puede caminar por el o si ya pertenece a la lista cerrada.
+11. Se instancia una variable con la suma del gCost del nodo más la distancia entre el nodo y su vecino utilizando el método GetDistance(node, neighbour).
+12. Si este valor es menor al gCost del vecino o el vecino no está en la lista abierta, el gCost del vecino será el anteriormente calculado, el hCost del vecino será la distancia entre el mismo y el objetivo y, por último, el padre del vecino será node.
+13. Por último, si la lista abierta no contiene al vecino, este será agregado a la lista abierta.
