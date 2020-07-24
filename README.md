@@ -501,3 +501,33 @@ Esta clase es la encargada de generar los nodos dentro el grid. Necesita las sig
 
 Luego se realiza la construcción del nodo utilizando las variables walkable, worldPosition, gridX y gridY. Por último, se calcula el valor de fCost sumando hCost y gCost.
 
+### Grid.cs:
+Esta clase se encarga de crear un grid del tamaño que el usuario quiera. Además, necesita las siguientes variables:
+* UnwalkableMask: partes por las cuales no se puede caminar.
+* GridWorldSize: vector 2 que indica el tamaño del grid.
+* NodeRadius: Radio de cada nodo.
+* grid: Variable tipo Node.
+* NodeDiameter: Diámetro del nodo
+* GridSizeX: Tamaño del grid en el eje x.
+* GridSizeY: Tamaño del grid en el eje y.
+* path: camino final entre los dos puntos.
+
+* Awake():
+
+Este método se encarga de asignar las variables NodeDiameter (multiplicando por 2 el radio), GridSizeX (obteniendo la división de la componente “X” entre el NodeDiameter) y GridSizeY (obteniendo la división de la componente “Y” entre el NodeDiameter). Por último se genera el grid utilizando el método CreateGrid().
+
+* CreateGird():
+
+Este método se encarga de crear el grid, asegurándose que todos los nodos estén asignados de la manera correcta. Esto se hace iterando en ambos ejes “X” y “Y” y verificando que nada choque en ellos.
+
+* GetNeighbours(Node node):
+
+Este método devuelve una lista de los nodos vecinos del nodo ingresado. Se revisan en direcciones Verticales y Horizontales para evitar choques en las esquinas. Para ello, se crean dos variables correspondientes a los ejes “X” y “Y” para verificar que no se esté saliendo del grid.
+
+* NodeFromWorldPoint(Vector3 worldPosition):
+
+Este método retorna el nodo en la posición con respecto al mundo utilizando porcentajes en los ejes “X” y “Y” utilizando los métodos propios de la librería Mathf para obtener únicamente valores entre 0 y 1
+
+* OnDrawGizmos():
+
+Este método dibuja cubos en el editor pintándolos de diferente color para saber si se puede pasar por ese nodo o no. Los de color blanco significan caminables, los rojos los que no y los azules, representan al pathfinding. Esto se logra iterando en el tamaño del grid en los ejes “X” y “Y.
