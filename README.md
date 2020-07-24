@@ -558,3 +558,16 @@ Para encontrar el camino más corto entre estos dos vectores, se realiza el sigu
 11. Se instancia una variable con la suma del gCost del nodo más la distancia entre el nodo y su vecino utilizando el método GetDistance(node, neighbour).
 12. Si este valor es menor al gCost del vecino o el vecino no está en la lista abierta, el gCost del vecino será el anteriormente calculado, el hCost del vecino será la distancia entre el mismo y el objetivo y, por último, el padre del vecino será node.
 13. Por último, si la lista abierta no contiene al vecino, este será agregado a la lista abierta.
+
+* RetracePath(Node startNode, Node endNode):
+
+Este método retorna el camino final entre el buscador y el objetivo, para esto se realiza lo siguiente:
+
+1. Se instancia una lista de nodos y un nodo que represente el último, es decir, el endNode.
+2. Se itera siempre y cuando este nodo no sea el de inicio.
+3. Se añade este nodo a la lista final y el nodo se convierte en su nodo padre.
+4. Se aplica el método reservado Reverse() y es asignado a la variable de path en la clase Grid.cs
+
+* GetDistance(Node nodeA, Node nodeB):
+
+Este método obtiene la distancia entre dos nodos dependiendo de los valores absolutos de los componentes “X” y “Y “ en el grid de ambos nodos. Si la distancia en “X” es mayor, e multiplica 14 por la distancia en “Y” y se suma la resta entre “X” y “Y” multiplicada por diez. De no ser así, será lo contrario, 14 por a distancia en “X” más la distancia en “Y” menos “X” multiplicada por 10.
